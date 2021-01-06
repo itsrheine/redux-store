@@ -6,28 +6,27 @@ const CartItem = ({ item }) => {
     const [, dispatch] = useStoreContext();
 
     const removeFromCart = item => {
-        dispatch({ 
+        dispatch({
             type: REMOVE_FROM_CART,
             _id: item._id
         });
     };
-
     const onChange = (e) => {
         const value = e.target.value;
-
+      
         if (value === '0') {
-            dispatch({
-                type: REMOVE_FROM_CART,
-                _id: item._id
-            });
+          dispatch({
+            type: REMOVE_FROM_CART,
+            _id: item._id
+          });
         } else {
-            dispatch({
-                type: UPDATE_CART_QUANTITY,
-                _id: item._id,
-                purchaseQuantity: parseInt(value)
-            });
+          dispatch({
+            type: UPDATE_CART_QUANTITY,
+            _id: item._id,
+            purchaseQuantity: parseInt(value)
+          });
         }
-    };
+      };
 
     return (
         <div className="flex-row">
@@ -53,7 +52,7 @@ const CartItem = ({ item }) => {
                         onClick={() => removeFromCart(item)}
                     >
                         🗑️
-          </span>
+                    </span>
                 </div>
             </div>
         </div>

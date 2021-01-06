@@ -11,15 +11,6 @@ const Cart = () => {
     function toggleCart() {
         dispatch({ type: TOGGLE_CART });
     }
-    if (!state.cartOpen) {
-        return (
-            <div className="cart-closed" onClick={toggleCart}>
-                <span
-                    role="img"
-                    aria-label="trash">🛒</span>
-            </div>
-        );
-    }
 
     function calculateTotal() {
         let sum = 0;
@@ -29,6 +20,15 @@ const Cart = () => {
         return sum.toFixed(2);
     }
 
+    if (!state.cartOpen) {
+        return (
+            <div className="cart-closed" onClick={toggleCart}>
+                <span
+                    role="img"
+                    aria-label="trash">🛒</span>
+            </div>
+        );
+    }
     return (
         <div className="cart">
             <div className="close" onClick={toggleCart}>[close]</div>
@@ -44,7 +44,7 @@ const Cart = () => {
                             Auth.loggedIn() ?
                                 <button>
                                     Checkout
-                  </button>
+                                </button>
                                 :
                                 <span>(log in to check out)</span>
                         }
@@ -54,11 +54,12 @@ const Cart = () => {
                     <h3>
                         <span role="img" aria-label="shocked">
                             😱
-            </span>
-            You haven't added anything to your cart yet!
+                        </span>
+                        You haven't added anything to your cart yet!
                     </h3>
                 )}
         </div>
+
     );
 };
 
